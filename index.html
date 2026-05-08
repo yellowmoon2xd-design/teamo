@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Sabes cuánto te extraño?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fff, #f8cce0);
+      font-family: 'Brush Script MT', cursive;
+      text-align: center;
+      overflow-y: scroll; 
+    }
+    h1, h2 {
+      color: #b03060;
+      margin-top: 20px;
+    }
+    
+    .franja {
+      background-color: rgba(255,255,255,0.9);
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .franja img {
+      width: 200px; 
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    button {
+      margin: 10px;
+      padding: 15px 25px;
+      font-size: 22px;
+      border: none;
+      border-radius: 12px;
+      background-color: #ff99cc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Comic Sans MS', cursive;
+    }
+    button:hover {
+      background-color: #ff66b2;
+    } 
+    p {
+      font-size: 20px;
+      color: #4a004a;
+      line-height: 1.8;
+      margin: 40px auto;
+      width: 85%;
+      background-color: rgba(255,255,255,0.7);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      font-family: 'Segoe Script', cursive;
+    }
+    .hearts {
+      font-size: 35px;
+      color: red;
+      margin-top: 20px;
+    }
+    iframe {
+      margin-top: 20px;
+      border-radius: 12px;
+      border: none;
+    }
+    
+    .fresa {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url(R.jfif);
+      background-size: cover;
+      animation: caer 8s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes caer {
+      0% { transform: translateY(-50px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="franja">
+    <div>
+      <h1>¿Sabes cuánto te extraño?</h1>
+      <div id="pregunta">
+        <button id="me">Me</button>
+        <button id="mucho">Mucho</button>
+        <button id="muchisismo">Muchisisismo</button>
+        <button id="niunpoco">Ni un poco</button>
+      </div>
+    </div>
+    <img src="R.jfif" alt="Decoración romántica">
+  </div>
+
+  <div id="pagina2" style="display:none;">
+    <h2>TE EXTRAÑO MUCHISISISMO </h2>
+    
+    <a href="https://youtu.be/sARc0n2CAoI?si=2wWKB-ig0gFFRt8o" target="_blank"
+       style="display:inline-block; padding:15px 25px; background:#ff99cc; color:white; border-radius:10px; text-decoration:none; font-size:20px;">
+       Escucha esta canción, dale play :D
+    </a>
+
+    <p>
+      Este día es 8 de mayo, hoy hubiéramos cumplido dos años. Esto no es para que vuelvas, sé que eso es imposible para este punto de la vida. Solo quiero que sepas que al final de todo esto te amo, y sé que no sientes lo mismo. Así que el día de hoy, te dejo oficialmente, no te esperaré más. El esperarte solo me hace daño porque me ilusiono en que algún día vas a regresar y eso jamás va a pasar. Tal vez en otra vida estuvimos juntos, nos casamos, tuvimos a Monnier y fuimos felices. En esta no se pudo y no quiero que creas que pienso que lo nuestro fue un error, fue lo más hermoso de mi vida y no habrá ningún amor como el tuyo. Nadie va a completar mis frases, nadie contará chistes malos cuando esté triste, mucho menos se pondrá a bailar para que deje de llorar. Gracias, en serio muchas gracias por todo lo que hiciste por mí. Gracias a ti estoy aquí, estudiando y tratando de salir adelante. Sé que después de esto no volveré a amar de la misma manera, pero quiero salir adelante. Ya me cansé de andar en mood "Paraíso daña" de Milo J. Espero volver a encontrar a alguien que me haga sentir como lo que una vez sentimos. Te deseo éxitos en tu vida. 
+      <br><br>Att. tu ex amor de tu vida jsjs...
+    </p>
+    
+    <div class="hearts">❤️❤️❤️❤️❤️❤️❤️❤️❤️</div> 
+  </div>
+
+  <script>
+    const meBtn = document.getElementById("me");
+    const muchoBtn = document.getElementById("mucho");
+    const muchisismoBtn = document.getElementById("muchisismo");
+    const niunpocoBtn = document.getElementById("niunpoco");
+    const preguntaDiv = document.getElementById("pregunta");
+    const pagina2Div = document.getElementById("pagina2");
+
+    function shrinkButton(btn) {
+      let size = parseFloat(window.getComputedStyle(btn).fontSize);
+      if (size > 5) {
+        btn.style.fontSize = (size - 3) + "px";
+        btn.style.padding = "5px " + (size - 3) + "px";
+      } else {
+        btn.style.display = "none";
+      }
+    }
+
+    meBtn.addEventListener("click", () => shrinkButton(meBtn));
+    niunpocoBtn.addEventListener("click", () => shrinkButton(niunpocoBtn));
+
+    muchoBtn.addEventListener("click", (e) => {
+      e.preventDefault(); 
+    });
+
+    muchisismoBtn.addEventListener("click", () => {
+      preguntaDiv.style.display = "none";
+      pagina2Div.style.display = "block";
+    });
+
+    function crearFresa() {
+      const fresa = document.createElement("div");
+      fresa.classList.add("fresa");
+      fresa.style.left = Math.random() * window.innerWidth + "px";
+      fresa.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(fresa);
+      setTimeout(() => { fresa.remove(); }, 10000);
+    }
+    setInterval(crearFresa, 800);
+  </script>
+</body>
+</html>
